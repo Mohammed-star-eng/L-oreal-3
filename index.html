@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Oréal Paris - Because You're Worth It</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Instrument+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="nav-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/L%27Or%C3%A9al_logo.svg" alt="L'Oréal Paris" class="logo-image">
+            </div>
+            
+            <!-- Navigation Menu -->
+            <ul class="nav-menu">
+                <li><a href="#bestsellers">Bestsellers</a></li>
+                <li><a href="#categories">Pro Collections</a></li>
+                <li><a href="#offers">Limited Offers</a></li>
+                <li><a href="#newsletter">Join Community</a></li>
+            </ul>
+            
+            <!-- Action Buttons -->
+            <div class="nav-actions">
+                <button title="Search Products"><i class="fas fa-search"></i></button>
+                <button title="My Account"><i class="fas fa-user"></i></button>
+                <button title="Shopping Cart (2 items)">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge"></span>
+                </button>
+                <button class="signup-btn">Sign Up & Save 20%</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Professional Hero Section -->
+    <section class="hero scroll-animate">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="brand-tagline">Paris • Since 1909</div>
+                <h1>Because You're <span class="highlight">Worth It</span></h1>
+                <p>Discover the science of beauty through our award-winning formulations, crafted with precision and passion for over a century.</p>
+                
+                <div class="hero-cta">
+                    <button class="btn-primary-professional">Explore Collection</button>
+                    <button class="btn-secondary-professional">Find Your Shade</button>
+                </div>
+                
+                <!-- Professional Trust Indicators -->
+                <div class="trust-indicators">
+                    <div>
+                        <div class="trust-number">115+</div>
+                        <div class="trust-label">Years of Innovation</div>
+                    </div>
+                    <div>
+                        <div class="trust-number">50M+</div>
+                        <div class="trust-label">Global Customers</div>
+                    </div>
+                    <div>
+                        <div class="trust-number">4.8★</div>
+                        <div class="trust-label">Expert Rating</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-image-container">
+                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80" alt="L'Oréal Paris Beauty Collection" class="hero-image-rotated">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Bestsellers -->
+    <section class="bestsellers scroll-animate" id="bestsellers">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Bestselling Products</h2>
+                <p class="section-subtitle">Our most loved products with thousands of 5-star reviews</p>
+            </div>
+            <div class="bestseller-grid">
+                <div class="product-card">
+                    <div class="product-badge bestseller">BESTSELLER</div>
+                    <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=80" alt="True Match Foundation">
+                    <h3>True Match Foundation</h3>
+                    <p>Perfect shade match for all skin tones</p>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="review-count">(2,456 reviews)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">$16.99</span>
+                        <span class="original-price">$22.99</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge new">NEW</div>
+                    <img src="https://cdn11.bigcommerce.com/s-z4n81jv/images/stencil/1280x1280/attribute_rule_images/42527_source_1562599057.jpg" alt="Rouge Signature Lipstick">
+                    <h3>Rouge Signature Matte Lipstick</h3>
+                    <p>Long-lasting liquid lipstick</p>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="review-count">(1,834 reviews)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">$12.99</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge sale">25% OFF</div>
+                    <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80" alt="Revitalift Moisturizer">
+                    <h3>Revitalift Anti-Aging Moisturizer</h3>
+                    <p>Reduces wrinkles in 4 weeks</p>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="review-count">(3,267 reviews)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">$24.99</span>
+                        <span class="original-price">$32.99</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+            <div class="section-cta">
+                <button class="view-all-btn">View All Bestsellers →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Product Categories -->
+    <section class="categories scroll-animate" id="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Professional Collections</h2>
+                <p class="section-subtitle">Explore our expertly curated collections, each formulated with cutting-edge technology and premium ingredients.</p>
+            </div>
+            
+            <div class="category-grid">
+                <!-- Makeup Category -->
+                <div class="professional-category-card" id="professional-makeup">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80" alt="Professional Makeup Collection">
+                        <div class="category-overlay">
+                            <button class="overlay-btn">Shop Collection</button>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>Professional Makeup</h3>
+                        <p>High-performance cosmetics trusted by makeup artists worldwide for flawless, long-lasting results.</p>
+                        <div class="category-features">
+                            <span class="feature-tag">Professional grade</span>
+                            <span class="feature-tag">All skin tones</span>
+                            <span class="feature-tag">Long-lasting</span>
+                        </div>
+                        <div class="category-footer">
+                            <span class="category-price">From $12.99</span>
+                            <span class="category-count">500+ Products</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skincare Category -->
+                <div class="professional-category-card" id="advanced-skincare">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Advanced Skincare Solutions">
+                        <div class="category-overlay">
+                            <button class="overlay-btn">Shop Collection</button>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>Advanced Skincare</h3>
+                        <p>Science-backed formulations with proven ingredients for visible results and healthy, radiant skin.</p>
+                        <div class="category-features">
+                            <span class="feature-tag">Clinically tested</span>
+                            <span class="feature-tag">Anti-aging</span>
+                            <span class="feature-tag">Dermatologist approved</span>
+                        </div>
+                        <div class="category-footer">
+                            <span class="category-price">From $18.99</span>
+                            <span class="category-count">300+ Products</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hair Care Category -->
+                <div class="professional-category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Professional Hair Care">
+                        <div class="category-overlay">
+                            <button class="overlay-btn">Shop Collection</button>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>Professional Hair Care</h3>
+                        <p>Salon-quality treatments and styling products for every hair type, texture, and concern.</p>
+                        <div class="category-features">
+                            <span class="feature-tag">Salon-quality</span>
+                            <span class="feature-tag">All hair types</span>
+                            <span class="feature-tag">Damage repair</span>
+                        </div>
+                        <div class="category-footer">
+                            <span class="category-price">From $14.99</span>
+                            <span class="category-count">250+ Products</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Professional Services Banner -->
+            <div class="services-banner">
+                <h3>Professional Services</h3>
+                <p>Book a consultation with our certified beauty experts for personalized recommendations and professional application techniques.</p>
+                <div class="services-buttons">
+                    <button class="services-btn-primary">Book Consultation</button>
+                    <button class="services-btn-secondary">Find Salon</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers & Deals -->
+    <section class="offers scroll-animate" id="offers">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Limited Time Offers</h2>
+                <p class="section-subtitle">Don't miss these exclusive deals!</p>
+            </div>
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <div class="offer-icon">🛍️</div>
+                    <h3>Buy 2 Ge t 1 FREE</h3>
+                    <p>On all skincare products. Mix and match your favorites!</p>
+                    <div class="offer-code">
+                        <span>Code: SKINCARE3</span>
+                    </div>
+                    <button class="offer-btn">Shop Skincare</button>
+                </div>
+                
+                <div class="offer-card">
+                    <div class="offer-icon">💄</div>
+                    <h3>40% Off Makeup Sets</h3>
+                    <p>Complete your look with our curated makeup collections.</p>
+                    <div class="offer-code">
+                        <span>No code needed</span>
+                    </div>
+                    <button class="offer-btn">Shop Sets</button>
+                </div>
+                
+                <div class="offer-card">
+                    <div class="offer-icon">🚚</div>
+                    <h3>Free Premium Shipping</h3>
+                    <p>On orders over $35. Plus free samples with every order!</p>
+                    <div class="offer-code">
+                        <span>Auto-applied</span>
+                    </div>
+                    <button class="offer-btn">Start Shopping</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews & Social Proof -->
+    <section class="reviews scroll-animate" id="reviews">
+        <div class="container">
+            <div class="reviews-header">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Join millions of satisfied customers worldwide</p>
+                <div class="overall-rating">
+                    <span class="rating-stars">★★★★★</span>
+                    <p class="rating-text"><strong>4.8/5</strong> from over 50,000 reviews</p>
+                </div>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b367?auto=format&fit=crop&w=100&q=80" alt="Customer" class="reviewer-avatar">
+                        <div class="reviewer-info">
+                            <h4>Sarah M.</h4>
+                            <div class="reviewer-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"The True Match foundation is absolutely perfect! Finally found my exact shade match. Lasts all day and looks so natural."</p>
+                    <p class="review-product">Verified Purchase - True Match Foundation</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80" alt="Customer" class="reviewer-avatar">
+                        <div class="reviewer-info">
+                            <h4>Emily R.</h4>
+                            <div class="reviewer-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Rouge Signature lipstick is my holy grail! The color is stunning and it doesn't budge all day. Worth every penny!"</p>
+                    <p class="review-product">Verified Purchase - Rouge Signature Lipstick</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80" alt="Customer" class="reviewer-avatar">
+                        <div class="reviewer-info">
+                            <h4>Jessica L.</h4>
+                            <div class="reviewer-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Revitalift moisturizer has transformed my skin! Visible results in just 2 weeks. Fast shipping and great customer service too!"</p>
+                    <p class="review-product">Verified Purchase - Revitalift Moisturizer</p>
+                </div>
+            </div>
+            <div class="section-cta">
+                <button class="read-more-btn">Read More Reviews</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Newsletter & VIP Program -->
+    <section class="newsletter scroll-animate" id="newsletter">
+        <div class="container">
+            <div class="newsletter-header">
+                <h2>Join the L'Oréal Professional Community</h2>
+                <p>Get exclusive access to new launches, expert beauty tips, and member-only events from the world's leading beauty brand.</p>
+            </div>
+            
+            <!-- Newsletter Signup Form -->
+            <div class="professional-signup">
+                <form>
+                    <input type="email" placeholder="Enter your email address" required class="signup-email">
+                    <button type="submit" class="signup-btn">Subscribe Now</button>
+                </form>
+                <p class="signup-disclaimer">By subscribing, you agree to receive marketing communications from L'Oréal Paris.</p>
+            </div>
+            
+            <!-- VIP Benefits Grid -->
+            <div class="vip-benefits">
+                <div class="vip-benefit">
+                    <div class="benefit-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h4>Exclusive Offers</h4>
+                    <p>First access to sales, member-only discounts, and special promotions throughout the year.</p>
+                </div>
+                
+                <div class="vip-benefit">
+                    <div class="benefit-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>New Launches</h4>
+                    <p>Be the first to discover and try our latest innovations before they hit the shelves.</p>
+                </div>
+                
+                <div class="vip-benefit">
+                    <div class="benefit-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h4>Expert Tips</h4>
+                    <p>Receive personalized beauty advice and tutorials from professional makeup artists.</p>
+                </div>
+                
+                <div class="vip-benefit">
+                    <div class="benefit-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h4>VIP Events</h4>
+                    <p>Invitations to exclusive beauty workshops, masterclasses, and brand events.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Footer -->
+    <footer class="footer scroll-animate">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <div class="footer-brand-header">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/L%27Or%C3%A9al_logo.svg" alt="L'Oréal Paris" class="footer-logo-image">
+                    </div>
+                    <p class="footer-description">
+                        The world's leading beauty company, bringing you the latest innovations in makeup, skincare, and hair care since 1909.
+                    </p>
+                    <div class="footer-certifications">
+                        <span class="certification-tag">Cruelty-Free</span>
+                        <span class="certification-tag">Sustainable</span>
+                        <span class="certification-tag">Dermatologist Tested</span>
+                    </div>
+                </div>
+                
+                <!-- Shop Section -->
+                <div class="footer-section">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#professional-makeup">Professional Makeup</a></li>
+                        <li><a href="#advanced-skincare">Advanced Skincare</a></li>
+                        <li><a href="#professional-haircare">Professional Hair Care</a></li>
+                        <li><a href="#bestsellers">Bestsellers</a></li>
+                        <li><a href="#offers">Limited Time Offers</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services Section -->
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services-banner">Beauty Consultation</a></li>
+                        <li><a href="#ar-modal">Virtual Try-On</a></li>
+                        <li><a href="#beauty-quiz-modal">AI Beauty Quiz</a></li>
+                        <li><a href="#newsletter">Newsletter Signup</a></li>
+                        <li><a href="#vip-benefits">VIP Program</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support Section -->
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#footer">Contact Us</a></li>
+                        <li><a href="#footer">Shipping & Returns</a></li>
+                        <li><a href="#footer">FAQ</a></li>
+                        <li><a href="#footer">Size Guide</a></li>
+                        <li><a href="#footer">Track Order</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Connect Section -->
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                    <div class="footer-newsletter">
+                        <p>Newsletter Signup</p>
+                        <div class="footer-newsletter-form">
+                            <input type="email" placeholder="Your email">
+                        <button>Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div>
+                    <p>&copy; 2025 L'Oréal Paris. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#footer">Privacy Policy</a>
+                    <a href="#footer">Terms of Service</a>
+                    <a href="#footer">Accessibility</a>
+                    <a href="#footer">Careers</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AR Experience Modal -->
+    <div id="ar-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button onclick="closeARModal()" class="modal-close">&times;</button>
+            
+            <div class="modal-body">
+                <div class="modal-icon">📱</div>
+                <h2>AR Virtual Try-On</h2>
+                <p>Experience our revolutionary AR technology! Try on makeup virtually and see how you'll look before you buy.</p>
+                
+                <div class="ar-features">
+                    <div class="ar-feature">
+                        <i class="fas fa-palette"></i>
+                        <h4>Lipstick Try-On</h4>
+                        <p>Try 500+ shades</p>
+                    </div>
+                    <div class="ar-feature">
+                        <i class="fas fa-eye"></i>
+                        <h4>Eyeshadow</h4>
+                        <p>Complete looks</p>
+                    </div>
+                    <div class="ar-feature">
+                        <i class="fas fa-brush"></i>
+                        <h4>Foundation</h4>
+                        <p>Perfect match</p>
+                    </div>
+                </div>
+                
+                <button class="ar-launch-btn">
+                    <i class="fas fa-camera"></i>Launch AR Experience
+                </button>
+                <p class="modal-disclaimer">*Camera access required. Works best in good lighting.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Beauty Quiz Modal -->
+    <div id="beauty-quiz-modal" class="modal-overlay">
+        <div class="modal-content quiz-modal">
+            <button onclick="closeBeautyQuiz()" class="modal-close">&times;</button>
+            
+            <div class="modal-header">
+                <div class="modal-icon">🧠</div>
+                <h2>AI Beauty Quiz</h2>
+                <p>Answer a few questions and get your personalized beauty routine powered by AI!</p>
+            </div>
+            
+            <!-- Quiz Progress Bar -->
+            <div class="quiz-progress">
+                <div id="quiz-progress-bar"></div>
+            </div>
+            
+            <!-- Quiz Content -->
+            <div id="quiz-content">
+                <!-- Question 1 -->
+                <div class="quiz-question active" data-question="1">
+                    <h3>What's your primary skin concern?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-value="acne">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div>Acne & Breakouts</div>
+                        </button>
+                        <button class="quiz-option" data-value="aging">
+                            <i class="fas fa-clock"></i>
+                            <div>Anti-Aging</div>
+                        </button>
+                        <button class="quiz-option" data-value="dryness">
+                            <i class="fas fa-tint"></i>
+                            <div>Dryness</div>
+                        </button>
+                        <button class="quiz-option" data-value="sensitivity">
+                            <i class="fas fa-heart"></i>
+                            <div>Sensitivity</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Results will be displayed here -->
+            <div id="quiz-results" class="quiz-results">
+                <div class="results-icon">✨</div>
+                <h3>Your Personalized Routine</h3>
+                <div id="quiz-recommendations" class="quiz-recommendations">
+                    <!-- AI recommendations will be populated here -->
+                </div>
+                <button onclick="closeBeautyQuiz()" class="results-btn">Shop Recommended Products</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- L'Oréal Chatbot Widget - Redesigned -->
+    <div id="loreal-chatbot-widget" class="loreal-chatbot-widget">
+        <!-- Floating Chat Button -->
+        <div id="loreal-chatbot-toggle" class="loreal-chatbot-toggle" title="Chat with L'Oréal Beauty Assistant">
+            <div class="chat-button-content">
+                <i class="fas fa-sparkles chat-icon"></i>
+                <span class="chat-button-text">Beauty Chat</span>
+            </div>
+            <div class="pulse-ring"></div>
+            <div class="status-indicator online"></div>
+        </div>
+
+        <!-- Modern Chat Window -->
+        <div id="loreal-chatbot-window" class="loreal-chatbot-window">
+            <!-- Elegant Header -->
+            <div class="loreal-chatbot-header">
+                <div class="header-brand">
+                    <div class="brand-avatar">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <div class="brand-info">
+                        <h3>L'Oréal Beauty Assistant</h3>
+                        <p>Your personal beauty consultant</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <div class="status-badge online">
+                        <span class="status-dot"></span>
+                        Online
+                    </div>
+                    <button id="loreal-chatbot-close" class="close-button">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Messages Area with Better Structure -->
+            <div id="loreal-chatbot-messages" class="loreal-chatbot-messages">
+                <!-- Welcome message will be inserted here -->
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <button class="quick-action-btn" onclick="sendQuickMessage('What skincare routine do you recommend?')">
+                    <i class="fas fa-leaf"></i>
+                    Skincare
+                </button>
+                <button class="quick-action-btn" onclick="sendQuickMessage('Help me choose makeup')">
+                    <i class="fas fa-palette"></i>
+                    Makeup
+                </button>
+                <button class="quick-action-btn" onclick="sendQuickMessage('Best L\'Oréal products for me?')">
+                    <i class="fas fa-star"></i>
+                    Products
+                </button>
+            </div>
+
+            <!-- Enhanced Input Area -->
+            <div class="loreal-chatbot-input-container">
+                <div class="input-wrapper">
+                    <textarea 
+                        id="loreal-chatbot-input" 
+                        class="loreal-chatbot-input" 
+                        placeholder="Ask me anything about beauty..."
+                        rows="1"
+                        maxlength="500"></textarea>
+                    <div class="input-actions">
+                        <span class="char-counter">0/500</span>
+                        <button id="loreal-chatbot-send" class="send-button">
+                            <i class="fas fa-arrow-up"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="chatbot-footer">
+                <span class="powered-by">Powered by L'Oréal Paris AI</span>
+            </div>
+        </div>
+    </div>
+    <script src="secrets.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
