@@ -1007,12 +1007,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const productSelector = document.getElementById('routine-product-selector');
 
     if (routineForm && routineInput && routineResults) {
-        let isBuildingRoutine = false; // Prevent double submit
+        let isBuildingRoutine = false;
 
         routineForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-
-            if (isBuildingRoutine) return; // Prevent double submit
+            if (isBuildingRoutine) return;
             isBuildingRoutine = true;
 
             const userGoal = routineInput.value.trim();
@@ -1081,30 +1080,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 const data = await response.json();
                 let routineText = data.choices[0].message.content;
 
-                let steps = routineText.split(/\n\s*\d+[\.\)]/).filter(s => s.trim());
-                if (steps.length < 2) {
-                    steps = routineText.split('\n').filter(s => s.trim());
-                }
-
-                routineResults.innerHTML = steps.map((step, idx) => {
-                    let cleanStep = step.trim().replace(/^\d+[\.\)]\s*/, '');
-                    let matchedProduct = selectedProducts.find(p => cleanStep.includes(p));
-                    let productImg = '';
-                    if (matchedProduct) {
-                        let input = productSelector.querySelector(`input[value="${matchedProduct}"]`);
-                        if (input && input.dataset.img) {
-                            productImg = `<img src="${input.dataset.img}" alt="${matchedProduct}" style="width:40px;height:40px;vertical-align:middle;margin-right:8px;border-radius:8px;border:1px solid #eee;">`;
-                        }
-                    }
-                    return idx === 0
-                        ? `<div class="routine-step-item">${cleanStep}</div>`
-                        : `<div class="routine-step-item"><strong>Step ${idx}:</strong> ${productImg}${cleanStep}</div>`;
-                }).join('');
+                // Display the routine as received (preserve formatting)
+                routineResults.innerHTML = `<pre style="white-space:pre-wrap;font-family:inherit;color:#8B0000;">${routineText}</pre>`;
             } catch (err) {
                 routineResults.innerHTML = '<div style="color:#dc2626;">Error connecting to AI. Please try again.</div>';
             }
             isBuildingRoutine = false;
         });
     }
-    // ...existing code...
 });
