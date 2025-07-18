@@ -1957,28 +1957,49 @@ nav {
     border-color: #A91B47;
     background: linear-gradient(90deg, #fff7f2 0%, #f9f6f3 100%);
 }
+    justify-content: center;
+}
 
-.routine-services-row {
+.routine-services-row .container {
+    padding: 40px 32px;
+}
+
+.routine-services-row .services-banner {
+    flex: 1 1 420px;
+    max-width: 540px;
+    margin: 0;
+    padding: 40px 32px;
+    border-radius: 20px;
     display: flex;
-    gap: 32px;
-    align-items: stretch;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 8px 32px rgba(139, 0, 0, 0.07);
 }
 
-.routine-builder-section,
-.services-banner {
-    flex: 1 1 0;
-    min-width: 0;
+.personalized-tools {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #fff7f2 0%, #f5e7e0 100%);
+    box-shadow: 0 8px 32px rgba(139, 0, 0, 0.04);
+    position: relative;
+    z-index: 2;
 }
 
-/* Responsive fallback for mobile */
-@media (max-width: 900px) {
-    .routine-services-row {
-        flex-direction: column;
-        gap: 24px;
-    }
+.personalized-tools .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
 
-    .routine-builder-section,
-    .services-banner {
-        flex: 1 1 100%;
-    }
+.personalized-tools .section-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 36px;
+    color: #8B1538;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.personalized-tools .section-subtitle {
+    font-size: 17px;
+    color: #8b6f5c;
+    max-width: 600px;
+    margin: 0 auto;
 }
