@@ -1520,7 +1520,7 @@ nav {
 /* Modern Chat Window - Increased Height */
 .loreal-chatbot-window {
     position: absolute;
-    bottom: 80px;
+    bottom: 60px;
     right: 0;
     width: 380px;
     height: 550px;
@@ -1871,29 +1871,114 @@ nav {
     }
 }
 
-/* Responsive Design */
-@media (max-width: 480px) {
-    #loreal-chatbot-widget {
-        bottom: 16px;
-        right: 16px;
+/* Routine Builder Section */
+.routine-builder-section {
+    padding: 100px 0;
+    background: #fff7f2;
+}
+
+#routine-builder-form textarea {
+    font-family: 'Inter', sans-serif;
+    resize: vertical;
+    min-height: 60px;
+    max-height: 180px;
+    border: 1.5px solid #E8B4A0;
+    background: #f9f6f3;
+    color: #2c1810;
+    transition: border-color 0.2s;
+}
+
+#routine-builder-form textarea:focus {
+    border-color: #8B0000;
+    outline: none;
+}
+
+#routine-builder-results {
+    background: linear-gradient(135deg, #fff7f2 0%, #f9f6f3 100%);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(139, 0, 0, 0.10);
+    border: 1.5px solid #E8B4A0;
+    padding: 32px 24px;
+    height: 300px;      /* Fixed height always */
+    min-height: 0;      /* Remove min-height */
+    max-height: none;   /* Remove max-height */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Custom scrollbar for routine builder results */
+#routine-builder-results::-webkit-scrollbar {
+    width: 10px;
+    background: #f9f6f3;
+    border-radius: 10px;
+}
+#routine-builder-results::-webkit-scrollbar-thumb {
+    background: #E8B4A0;
+    border-radius: 10px;
+    border: 2px solid #fff7f2;
+}
+#routine-builder-results::-webkit-scrollbar-thumb:hover {
+    background: #8B0000;
+}
+
+/* Firefox scrollbar */
+#routine-builder-results {
+    scrollbar-width: thin;
+    scrollbar-color: #E8B4A0 #f9f6f3;
+}
+
+.routine-step-item {
+    background: linear-gradient(90deg, #f9f6f3 0%, #fff7f2 100%);
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    color: #8B0000;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: 0 2px 12px rgba(139,0,0,0.07);
+    border: 1.5px solid #E8B4A0;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.routine-step-item strong {
+    color: #A91B47;
+    font-family: 'Instrument Serif', serif;
+    font-size: 17px;
+    margin-right: 10px;
+}
+
+.routine-step-item:hover {
+    box-shadow: 0 6px 24px rgba(139,0,0,0.12);
+    border-color: #A91B47;
+    background: linear-gradient(90deg, #fff7f2 0%, #f9f6f3 100%);
+}
+
+.routine-services-row {
+    display: flex;
+    gap: 32px;
+    align-items: stretch;
+}
+
+.routine-builder-section,
+.services-banner {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+/* Responsive fallback for mobile */
+@media (max-width: 900px) {
+    .routine-services-row {
+        flex-direction: column;
+        gap: 24px;
     }
-    
-    .loreal-chatbot-window {
-        width: 320px;
-        height: 480px;
-        bottom: 70px;
-    }
-    
-    #loreal-chatbot-toggle {
-        padding: 12px 20px;
-        min-width: 120px;
-    }
-    
-    .chat-button-text {
-        font-size: 13px;
-    }
-    
-    .loreal-chatbot-messages {
-        min-height: 280px;
+
+    .routine-builder-section,
+    .services-banner {
+        flex: 1 1 100%;
     }
 }

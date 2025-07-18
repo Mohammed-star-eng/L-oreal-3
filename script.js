@@ -32,16 +32,21 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
-    // Professional form handling
+    // Professional form handling (newsletter/email forms only, exclude AI Routine Builder)
     document.querySelectorAll('form').forEach(form => {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            if (email) {
-                alert('Thank you for subscribing to L\'Oréal Paris updates!');
-                this.reset();
-            }
-        });
+        if (
+            form.querySelector('input[type="email"]') &&
+            form.id !== 'routine-builder-form'
+        ) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                if (email) {
+                    alert('Thank you for subscribing to L\'Oréal Paris updates!');
+                    this.reset();
+                }
+            });
+        }
     });
 });
 
@@ -995,131 +1000,111 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    function resetQuiz() {
-        currentQuestion = 1;
-        Object.keys(quizData).forEach(key => delete quizData[key]);
-        
-        const questions = document.querySelectorAll('.quiz-question');
-        questions.forEach((q, index) => {
-            q.classList.toggle('active', index === 0);
-        });
-        
-        const results = document.getElementById('quiz-results');
-        if (results) results.style.display = 'none';
-        
-        updateQuizProgress();
-    }
+    // === AI Routine Builder Standalone Implementation ===
+    const routineForm = document.getElementById('routine-builder-form');
+    const routineInput = document.getElementById('routine-builder-input');
+    const routineResults = document.getElementById('routine-builder-results');
+    const productSelector = document.getElementById('routine-product-selector');
 
-    function updateQuizProgress() {
-        const progressBar = document.getElementById('quiz-progress-bar');
-        if (progressBar) {
-            const progress = (currentQuestion - 1) / totalQuestions * 100;
-            progressBar.style.width = progress + '%';
-        }
-    }
+    if (routineForm && routineInput && routineResults) {
+        let isBuildingRoutine = false; // Prevent double submit
 
-    // Quiz option selection
-    document.addEventListener('click', function(e) {
-        if (e.target.closest('.quiz-option')) {
-            const option = e.target.closest('.quiz-option');
-            const question = option.closest('.quiz-question');
-            const questionNum = question.dataset.question;
-            
-            // Remove active class from all options in this question
-            question.querySelectorAll('.quiz-option').forEach(opt => {
-                opt.classList.remove('active');
-            });
-            
-            // Add active class to selected option
-            option.classList.add('active');
-            
-            // Store the answer
-            quizData[`question${questionNum}`] = option.dataset.value;
-            
-            // Move to next question after a short delay
-            setTimeout(() => {
-                nextQuestion();
-            }, 500);
-        }
-    });
+        routineForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
 
-    function nextQuestion() {
-        const currentQ = document.querySelector(`.quiz-question[data-question="${currentQuestion}"]`);
-        
-        if (currentQuestion < totalQuestions) {
-            // Hide current question
-            if (currentQ) currentQ.classList.remove('active');
-            
-            // Show next question
-            currentQuestion++;
-            const nextQ = document.querySelector(`.quiz-question[data-question="${currentQuestion}"]`);
-            if (nextQ) nextQ.classList.add('active');
-            
-            updateQuizProgress();
-        } else {
-            // Show results
-            showQuizResults();
-        }
-    }
+            if (isBuildingRoutine) return; // Prevent double submit
+            isBuildingRoutine = true;
 
-    function showQuizResults() {
-        const quizContent = document.getElementById('quiz-content');
-        const results = document.getElementById('quiz-results');
-        
-        if (quizContent) quizContent.style.display = 'none';
-        if (results) results.style.display = 'block';
-        
-        // Generate personalized recommendations
-        generateRecommendations();
-    }
+            const userGoal = routineInput.value.trim();
+            if (!userGoal) {
+                routineResults.innerHTML = '<div style="color:#dc2626;">Please describe your beauty goals.</div>';
+                isBuildingRoutine = false;
+                return;
+            }
 
-    function generateRecommendations() {
-        const recommendations = document.getElementById('quiz-recommendations');
-        if (!recommendations) return;
-        
-        let recommendationHTML = '';
-        
-        // Generate recommendations based on quiz answers
-        if (quizData.question1 === 'acne') {
-            recommendationHTML += `
-                <div class="recommendation-item">
-                    <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=100&q=80" alt="Acne Treatment">
-                    <div>
-                        <h4>Pure Clay Detox Mask</h4>
-                        <p>Perfect for acne-prone skin, reduces breakouts</p>
-                        <span class="price">$12.99</span>
-                    </div>
+            // Collect selected products
+            let selectedProducts = [];
+            if (productSelector) {
+                productSelector.querySelectorAll('input[type="checkbox"]:checked').forEach(input => {
+                    selectedProducts.push(input.value);
+                });
+            }
+
+            routineResults.innerHTML = `
+                <div style="color:#8B0000;font-style:italic;">
+                    Building your routine... 
+                    <span class="typing-dots"><span></span><span></span><span></span></span>
                 </div>
             `;
-        }
-        
-        // Add default recommendations
-        recommendationHTML += `
-            <div class="recommendation-item">
-                <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=100&q=80" alt="Foundation">
-                <div>
-                    <h4>True Match Foundation</h4>
-                    <p>Your perfect shade match for flawless coverage</p>
-                    <span class="price">$16.99</span>
-                </div>
-            </div>
-            <div class="recommendation-item">
-                <img src="https://cdn11.bigcommerce.com/s-z4n81jv/images/stencil/100x100/attribute_rule_images/42527_source_1562599057.jpg" alt="Lipstick">
-                <div>
-                    <h4>Rouge Signature Lipstick</h4>
-                    <p>Long-lasting, bold color that complements your style</p>
-                    <span class="price">$12.99</span>
-                </div>
-            </div>
-        `;
-        
-        recommendations.innerHTML = recommendationHTML;
-    }
 
-    // Close modals when clicking outside
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('modal-overlay')) {
-            e.target.style.display = 'none';
-        }
-    });
+            // API key check
+            if (!window.SECRETS || !window.SECRETS.OPENAI_API_KEY || window.SECRETS.OPENAI_API_KEY === 'your-openai-api-key-here') {
+                routineResults.innerHTML = '<div style="color:#dc2626;">AI routine builder is not configured. Please set your OpenAI API key in secrets.js.</div>';
+                isBuildingRoutine = false;
+                return;
+            }
+
+            try {
+                let productPrompt = selectedProducts.length
+                    ? `The user prefers these L'Oréal Paris products: ${selectedProducts.join(', ')}. Please tailor the routine to include or recommend these products where relevant.`
+                    : '';
+
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${window.SECRETS.OPENAI_API_KEY}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: 'gpt-3.5-turbo',
+                        messages: [
+                            {
+                                role: 'system',
+                                content: "You are a professional L'Oréal Paris beauty consultant. Build a step-by-step beauty routine for the user based on their goals. Only recommend L'Oréal Paris products. Format the routine as a numbered list. Be concise and specific. If the user asks about hair, skin, or makeup, tailor the routine accordingly. Always use L'Oréal Paris product names."
+                            },
+                            {
+                                role: 'user',
+                                content: userGoal + (productPrompt ? '\n' + productPrompt : '')
+                            }
+                        ],
+                        max_tokens: 350,
+                        temperature: 0.7
+                    })
+                });
+
+                if (!response.ok) {
+                    routineResults.innerHTML = '<div style="color:#dc2626;">Sorry, AI routine builder is unavailable. Please try again later.</div>';
+                    isBuildingRoutine = false;
+                    return;
+                }
+
+                const data = await response.json();
+                let routineText = data.choices[0].message.content;
+
+                let steps = routineText.split(/\n\s*\d+[\.\)]/).filter(s => s.trim());
+                if (steps.length < 2) {
+                    steps = routineText.split('\n').filter(s => s.trim());
+                }
+
+                routineResults.innerHTML = steps.map((step, idx) => {
+                    let cleanStep = step.trim().replace(/^\d+[\.\)]\s*/, '');
+                    let matchedProduct = selectedProducts.find(p => cleanStep.includes(p));
+                    let productImg = '';
+                    if (matchedProduct) {
+                        let input = productSelector.querySelector(`input[value="${matchedProduct}"]`);
+                        if (input && input.dataset.img) {
+                            productImg = `<img src="${input.dataset.img}" alt="${matchedProduct}" style="width:40px;height:40px;vertical-align:middle;margin-right:8px;border-radius:8px;border:1px solid #eee;">`;
+                        }
+                    }
+                    return idx === 0
+                        ? `<div class="routine-step-item">${cleanStep}</div>`
+                        : `<div class="routine-step-item"><strong>Step ${idx}:</strong> ${productImg}${cleanStep}</div>`;
+                }).join('');
+            } catch (err) {
+                routineResults.innerHTML = '<div style="color:#dc2626;">Error connecting to AI. Please try again.</div>';
+            }
+            isBuildingRoutine = false;
+        });
+    }
+    // ...existing code...
 });
