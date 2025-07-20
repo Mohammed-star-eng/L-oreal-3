@@ -1006,8 +1006,44 @@ document.addEventListener('DOMContentLoaded', function() {
     const routineResults = document.getElementById('routine-builder-results');
     const productSelector = document.getElementById('routine-product-selector');
 
+    // Persist product selection in localStorage
+    function saveProductSelection() {
+        if (!productSelector) return;
+        const selected = [];
+        productSelector.querySelectorAll('input[type="checkbox"]').forEach(input => {
+            if (input.checked) selected.push(input.value);
+        });
+        localStorage.setItem('routine_selected_products', JSON.stringify(selected));
+    }
+
+    function restoreProductSelection() {
+        if (!productSelector) return;
+        const selected = JSON.parse(localStorage.getItem('routine_selected_products') || '[]');
+        productSelector.querySelectorAll('input[type="checkbox"]').forEach(input => {
+            input.checked = selected.includes(input.value);
+        });
+    }
+
+    // Attach change listeners and restore selection on page load
+    if (productSelector) {
+        productSelector.querySelectorAll('input[type="checkbox"]').forEach(input => {
+            input.addEventListener('change', saveProductSelection);
+        });
+        restoreProductSelection();
+    }
+
     if (routineForm && routineInput && routineResults) {
         let isBuildingRoutine = false;
+
+        // Store conversation history for routine builder
+        let routineConversation = [
+            {
+                role: 'system',
+                content: "You are a professional L'Oréal Paris beauty consultant. Build a step-by-step beauty routine for the user based on their goals. Only recommend L'Oréal Paris products. Format the routine as a numbered list. Be concise and specific. If the user asks about hair, skin, or makeup, tailor the routine accordingly. Always use L'Oréal Paris product names. If the user asks follow-up questions, respond based on previous context."
+            }
+        ];
+
+        routineForm.onsubmit = null;
 
         routineForm.addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -1029,6 +1065,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
 
+            let productPrompt = selectedProducts.length
+                ? `The user prefers these L'Oréal Paris products: ${selectedProducts.join(', ')}. Please tailor the routine to include or recommend these products where relevant.`
+                : '';
+
+            // Add user message to conversation
+            routineConversation.push({
+                role: 'user',
+                content: userGoal + (productPrompt ? '\n' + productPrompt : '')
+            });
+
             routineResults.innerHTML = `
                 <div style="color:#8B0000;font-style:italic;">
                     Building your routine... 
@@ -1044,10 +1090,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             try {
-                let productPrompt = selectedProducts.length
-                    ? `The user prefers these L'Oréal Paris products: ${selectedProducts.join(', ')}. Please tailor the routine to include or recommend these products where relevant.`
-                    : '';
-
                 const response = await fetch('https://api.openai.com/v1/chat/completions', {
                     method: 'POST',
                     headers: {
@@ -1056,16 +1098,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     },
                     body: JSON.stringify({
                         model: 'gpt-3.5-turbo',
-                        messages: [
-                            {
-                                role: 'system',
-                                content: "You are a professional L'Oréal Paris beauty consultant. Build a step-by-step beauty routine for the user based on their goals. Only recommend L'Oréal Paris products. Format the routine as a numbered list. Be concise and specific. If the user asks about hair, skin, or makeup, tailor the routine accordingly. Always use L'Oréal Paris product names."
-                            },
-                            {
-                                role: 'user',
-                                content: userGoal + (productPrompt ? '\n' + productPrompt : '')
-                            }
-                        ],
+                        messages: routineConversation,
                         max_tokens: 350,
                         temperature: 0.7
                     })
@@ -1079,6 +1112,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 const data = await response.json();
                 let routineText = data.choices[0].message.content;
+
+                // Add assistant response to conversation
+                routineConversation.push({
+                    role: 'assistant',
+                    content: routineText
+                });
 
                 // Display the routine as received (preserve formatting)
                 routineResults.innerHTML = `<pre style="white-space:pre-wrap;font-family:inherit;color:#8B0000;">${routineText}</pre>`;
